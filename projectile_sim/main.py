@@ -1,72 +1,35 @@
+# this is the main.py file, it creates the pygame window and runs the game loop
+
+# imports
 import pygame
-from projectile import Projectile
+import sys
+from level import Level
+from settings import screen_width, screen_height
 
 # Initialize pygame
 pygame.init()
 
 # Create a window
-screen = pygame.display.set_mode((640, 480))
-
-# Fill the window with black
-screen.fill((0, 0, 0))
+screen = pygame.display.set_mode((screen_width, screen_height))
 
 #clock
 clock = pygame.time.Clock()
 
-
-def get_mouse_state(previous_mouse_pressed):
-    if previous_mouse_pressed and pygame.mouse.get_pressed()[0]:
-        return 'HELD'
-    elif previous_mouse_pressed:
-        return 'RELEASE'
-    elif pygame.mouse.get_pressed()[0]:
-        return 'CLICKED'
-
-previous_mouse_pressed = False
-ball_pos = (0, 0)
-velocity = pygame.Vector2()
-velocity.xy = 0, 0
-
-k = .1
-
-ball_created = False
+# the 'level', which is basically everything going on on-screen
+level = Level(screen)
 
 # Keep the game running until the user quits
 while True:
-    
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
+            sys.exit()
 
-    state = get_mouse_state(previous_mouse_pressed)
-
-
-    if state == 'HELD':
-        velocity.x = k * (ball_pos[0] - pygame.mouse.get_pos()[0])
-        velocity.y = k * (ball_pos[1] - pygame.mouse.get_pos()[1])
-    elif state == 'CLICKED':
-        ball_pos = pygame.mouse.get_pos()
-        ball_created = False
-    elif state == 'RELEASE':
-        ball = Projectile(screen, ball_pos, velocity)
-        ball_created = True
-
-
-    previous_mouse_pressed = pygame.mouse.get_pressed()[0]    
-
+    # fills the screen with black every frame
     screen.fill('black')
-    if ball_created:
-        ball.update()
+
+    # puts the projectiles on screen
+    level.run()
 
     pygame.display.update()
     clock.tick(60)
-
-# I want to be able to create a ball whenever the user clicks somewhere: done
-
-# TODO now we want to get the mouse state (just started pressing, holding, released)
-
-
-
-
-# Quit pygame
-pygame.quit()
