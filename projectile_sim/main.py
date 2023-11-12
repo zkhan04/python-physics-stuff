@@ -4,7 +4,7 @@
 import pygame
 import sys
 from level import Level
-from settings import screen_width, screen_height
+from settings import *
 
 # Initialize pygame
 pygame.init()

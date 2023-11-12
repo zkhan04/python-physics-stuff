@@ -3,6 +3,7 @@
 
 # imports
 import pygame
+from settings import *
 
 class Projectile(pygame.sprite.Sprite):
     # constructor which passes in an initial position and velocity
@@ -15,8 +16,8 @@ class Projectile(pygame.sprite.Sprite):
         self.velocity.y = velocity.y
 
         # drawn as a 10x10 white rectangle
-        self.image = pygame.Surface((10, 10))
-        self.image.fill('white')
+        self.image = pygame.Surface(projectile_shape)
+        self.image.fill(projectile_color)
 
         # sets its center at the position passed in as parameter
         self.rect = self.image.get_rect()
@@ -24,7 +25,7 @@ class Projectile(pygame.sprite.Sprite):
 
     # applies gravity 
     def apply_gravity(self):
-        self.velocity.y += .5
+        self.velocity.y += gravity
 
     # changes rect position based on velocity
     def change_position(self):

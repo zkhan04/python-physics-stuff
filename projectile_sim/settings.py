@@ -7,5 +7,21 @@
 velocity_sensitivity = .1
 
 # screen width and screen height
-screen_width = 640
-screen_height = 480
+screen_width = 800
+screen_height = 800
+
+# gravity value
+gravity = 0.4
+
+# projectile cosmetics
+projectile_color = 'white'
+projectile_shape = (10, 10)
+
+
+# projection time, and dot spacing (time, not spatial) for projection path
+projection_frames = 100
+projection_spacing = 1
+
+# projection path cosmetic stuff
+projection_path_color = 'purple'
+projection_path_shape = (3, 3)
