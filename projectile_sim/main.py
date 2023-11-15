@@ -28,8 +28,10 @@ while True:
     # fills the screen with black every frame
     screen.fill('black')
 
-    # puts the projectiles on screen
+    # # puts the projectiles on screen
     level.run()
+
+
 
     pygame.display.update()
     clock.tick(60)

@@ -7,11 +7,11 @@
 velocity_sensitivity = .1
 
 # screen width and screen height
-screen_width = 800
-screen_height = 800
+screen_width = 700
+screen_height = 700
 
 # gravity value
-gravity = 0.4
+gravity = 0.7
 
 # projectile cosmetics
 projectile_color = 'white'
@@ -25,3 +25,6 @@ projection_spacing = 1
 # projection path cosmetic stuff
 projection_path_color = 'purple'
 projection_path_shape = (3, 3)
+
+# energy dissipation after each bounce
+energy_preserved = .8

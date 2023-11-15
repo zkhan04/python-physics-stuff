@@ -17,8 +17,7 @@ class Level():
 
         # temp_velocity stores the velocity of whatever projectile will be
         # created when the mouse is released
-        self.temp_velocity = pygame.Vector2()
-        self.temp_velocity.xy = 0, 0
+        self.temp_velocity = [0, 0]
 
         # temp_position is the position of whatever projectile will be created
         self.temp_position = (0, 0)
@@ -36,8 +35,8 @@ class Level():
         # determine velocity of the projectile
         if self.mouse_state == 'HELD':
             mouse_pos = pygame.mouse.get_pos()
-            self.temp_velocity.x = velocity_sensitivity * (self.temp_position[0] - mouse_pos[0])
-            self.temp_velocity.y = velocity_sensitivity * (self.temp_position[1] - mouse_pos[1])
+            self.temp_velocity[0] = velocity_sensitivity * (self.temp_position[0] - mouse_pos[0])
+            self.temp_velocity[1] = velocity_sensitivity * (self.temp_position[1] - mouse_pos[1])
             self.projection_path = path_points(self.temp_position, self.temp_velocity)
         else:
             # if the mouse was just clicked, set its position as the position of the projectile
@@ -48,7 +47,7 @@ class Level():
             # if the mouse was just released, use the position and velocity info to create a projectile
             # and launch it.
             elif self.mouse_state == 'RELEASED':
-                ball = Projectile(self.temp_position, self.temp_velocity)
+                ball = Projectile(self.temp_position, self.temp_velocity, [(1, gravity)])
                 self.projectiles.add(ball)
             self.projection_path = []
 
