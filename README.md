@@ -41,3 +41,13 @@ Silly physics stuff in pygame, gonna build simple projects for now and amp up th
   - this results in a slight discrepancy between the projected and actual path.
   - I want to consolidate the calculations for both into one method.
   - will also refactor changes from this commit hopefully teehee
+
+**commit 4, 11/14/2023: added bouncing + energy dissipation**
+
+- changes:
+  - the balls can bounce off the wall now.
+  - we can also have the ball's velocity decrease every time it hits a wall, just like real-life
+- planned for next commit:
+  - not really sure, I'm a little burnt out of this project. I'll probably take a break and study for other exams.
+  - but when I keep working on it, I'll generalize the system so that projectiles can be subject to multiple forces, not just gravity.
+  - I also want to allow the user to control parameters like gravity, energy dissipation, etc. via sliders instead of having to edit settings.py
